@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
-import {getCommentFromServer } from '../actions'
+import {getCommentFromServer } from '../actions/comments'
 import {addServerComment} from '../utils/serverapi'
 import Uuid from 'uuid-lib'
+import SmallHeader from '../components/SmallHeader'
 import { Button, 
 Grid,
 Row,
@@ -60,6 +61,9 @@ class NewComment extends Component {
         <Grid>
           <Row className="show-grid">
           <Col xs={12} md={12}><PageHeader>Readable <small>Add Comment</small></PageHeader></Col>
+          </Row>
+          <Row className="show-grid">
+               <Col xs={12} md={12}><SmallHeader /></Col>
           </Row>
           <Row className="show-grid">
             <Col xs={8} md={8}>

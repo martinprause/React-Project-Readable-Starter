@@ -1,9 +1,12 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
-import {getPostFromServer,getCommentsFromServer,votePostOnServer,deletePostOnServer ,getCategoriesFromServer} from '../actions'
+import {getPostFromServer,votePostOnServer,deletePostOnServer} from '../actions/posts'
+import {getCommentsFromServer} from '../actions/comments'
+import {getCategoriesFromServer} from '../actions'
 import {editServerPost} from '../utils/serverapi'
 import Comments from '../components/Comments'
+import SmallHeader from '../components/SmallHeader'
 import { Button, 
   ButtonGroup, 
   Row, 
@@ -43,7 +46,8 @@ class EditPost extends Component {
           body: data.post.body,
           author: data.post.author,
           category: data.post.category,
-          voteScore: data.post.voteScore
+          voteScore: data.post.voteScore,
+          deleted: data.post.deleted
         })
       })
       this.props.getCommentsFromServer(postId)
@@ -104,10 +108,22 @@ class EditPost extends Component {
 
     return (
      <div>
-
+        {this.state.id == undefined ? (
+          <Grid>
+          <Row className="show-grid">
+              <Col xs={12} md={12}><PageHeader>Readable <small>Edit Post</small></PageHeader></Col>
+          </Row>
+          <Row >
+            <h1>DELETED</h1><br/><Button bsStyle='success' onClick={this.onCancelClick.bind(this)}>Go Back</Button>
+          </Row>
+          </Grid>
+        ):( 
         <Grid>
           <Row className="show-grid">
           <Col xs={12} md={12}><PageHeader>Readable <small>Edit Post</small></PageHeader></Col>
+          </Row>
+           <Row className="show-grid">
+               <Col xs={12} md={12}><SmallHeader /></Col>
           </Row>
           <Row className="show-grid">
             <Col xs={8} md={8}>
@@ -155,13 +171,16 @@ class EditPost extends Component {
               </ButtonGroup>
             </Col>
           </Row>
+          
           <Row>
             <Col xs={8} md={8}>
               <Comments />
             </Col>
 
           </Row>
+           
         </Grid>
+        )}
         
       </div>
     )

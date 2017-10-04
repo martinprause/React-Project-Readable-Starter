@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import Posts from '../components/Posts'
 import Controls from '../components/Controls'
 import Header from '../components/Header'
-import {getPostsFromServer, getPostsByCategoryFromServer} from '../actions'
+import * as actions from '../actions/posts'
 import '../css/bootstrap.min.css'
 import { Grid, Row, Col } from 'react-bootstrap'
 
@@ -47,6 +47,4 @@ class Homepage extends Component {
 
 const mapStateToProps = ({categories, posts}) => ({categories, posts})
 
-const mapDispatchToProps = {getPostsFromServer, getPostsByCategoryFromServer}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Homepage)
+export default connect(mapStateToProps, actions)(Homepage)

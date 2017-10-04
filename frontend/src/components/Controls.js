@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
-import {sortPosts} from '../actions'
+import {sortPosts} from '../actions/posts'
 import '../css/bootstrap.min.css'
 import { Button, ListGroup, ListGroupItem } from 'react-bootstrap'
 

@@ -15,7 +15,6 @@ class Comments extends Component {
     this.props.history.push(`/comments/${comment.id}`)
   }
 
-
   render () {
      return (
         <div>
@@ -32,7 +31,7 @@ class Comments extends Component {
               </Row>
           
               <Row className="show-grid">
-                <Col xs={2} md={2}><Button onClick={() => this.goToComment(comment)}>Edit </Button></Col>
+                <Col xs={2} md={2}><Button bsStyle="primary" onClick={() => this.goToComment(comment)}>Edit </Button></Col>
               </Row>
             </Grid>           
           </Panel>  

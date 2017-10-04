@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
-import {getCommentFromServer,voteCommentOnServer,deleteCommentOnServer } from '../actions'
+import * as actions from '../actions/comments'
 import {editServerComment} from '../utils/serverapi'
+import SmallHeader from '../components/SmallHeader'
 import { Button, 
   ButtonGroup, 
   Row, 
@@ -42,6 +43,7 @@ class EditComment extends Component {
             body: data.comment.body,
             author: data.comment.author,
             voteScore: data.comment.voteScore
+            
         })
 
       })
@@ -90,6 +92,9 @@ class EditComment extends Component {
           <Col xs={12} md={12}><PageHeader>Readable <small>Edit Comment</small></PageHeader></Col>
           </Row>
           <Row className="show-grid">
+               <Col xs={12} md={12}><SmallHeader /></Col>
+          </Row>
+          <Row className="show-grid">
             <Col xs={8} md={8}>
 
               <Form>
@@ -129,6 +134,5 @@ class EditComment extends Component {
 }
 
 const mapStateToProps = ({comment, post}) => ({comment, post})
-const mapDispatchToProps = {getCommentFromServer, deleteCommentOnServer,voteCommentOnServer }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditComment))
+export default withRouter(connect(mapStateToProps, actions)(EditComment))

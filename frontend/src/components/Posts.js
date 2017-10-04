@@ -4,6 +4,7 @@ import {withRouter} from 'react-router-dom'
 import '../css/bootstrap.min.css'
 import { Button, Panel, Grid, Row, Col, Well, Badge } from 'react-bootstrap'
 import formatTimestamp from '../utils/formatTimestamp'
+import CommentCount from './CommentCount'
 
 class Posts extends Component {
 
@@ -28,7 +29,9 @@ class Posts extends Component {
                 <Col xs={2} md={2}>Category: {post.category}</Col>
                 <Col xs={2} md={2}>Score <Badge>{post.voteScore}</Badge></Col>
               </Row>
-          
+              <Row className="show-grid">
+                <Col xs={3} md={3}><CommentCount postId={post.id}/></Col>
+              </Row>  
               <Row className="show-grid">
                 <Col xs={3} md={3}><Button bsStyle="primary" onClick={() => this.navigate(post)}>Edit Post</Button></Col>
               </Row>

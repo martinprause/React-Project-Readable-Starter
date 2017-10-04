@@ -1,9 +1,11 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
-import {getPostFromServer,getCategoriesFromServer } from '../actions'
+import {getPostFromServer} from '../actions/posts'
+import {getCategoriesFromServer} from '../actions'
 import {addServerPost} from '../utils/serverapi'
 import Uuid from 'uuid-lib'
+import SmallHeader from '../components/SmallHeader'
 import { Button, 
   ButtonGroup, 
   Row, 
@@ -72,6 +74,9 @@ class NewPost extends Component {
         <Grid>
           <Row className="show-grid">
           <Col xs={12} md={12}><PageHeader>Readable <small>Add Post</small></PageHeader></Col>
+          </Row>
+          <Row className="show-grid">
+               <Col xs={12} md={12}><SmallHeader /></Col>
           </Row>
           <Row className="show-grid">
             <Col xs={8} md={8}>
